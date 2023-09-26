@@ -25,3 +25,17 @@ export const createTodo = (req: Request, res: Response) => {
   });
 };
 
+export const deleteTodo = (req: Request, res: Response) => {
+  const todoId = String(req.params.todoId);
+
+  const index = todoDatabase.findIndex((todo) => {
+    return todo.id === todoId;
+  });
+
+  todoDatabase.splice(index, 1);
+
+  return res
+    .status(200)
+    .json({ message: 'Todo succesfully removed.' });
+};
+
