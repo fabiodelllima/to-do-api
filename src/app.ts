@@ -8,6 +8,8 @@ app.get('/', readTodos);
 
 app.get('/:todoId', isTodoIdValid, readTodoById);
 
+app.post('/', validation(createTodoValidation), createTodo);
+
 
 app.listen(PORT, () => {
   console.log(`Server srarted on port ${PORT}`);
