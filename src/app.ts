@@ -1,6 +1,8 @@
 import express from 'express';
 import { validation } from './middlewares/validation';
+import { createTodoValidation } from './schemas/createTodoValidation';
 import { isTodoIdValid } from './middlewares/isTodoIdValid';
+import { updateTodoValidation } from './schemas/updateTodoValidation';
 import {
   createTodo,
   deleteTodo,
