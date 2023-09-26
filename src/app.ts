@@ -6,6 +6,8 @@ app.use(express.json());
 
 app.get('/', readTodos);
 
+app.get('/:todoId', isTodoIdValid, readTodoById);
+
 
 app.listen(PORT, () => {
   console.log(`Server srarted on port ${PORT}`);
