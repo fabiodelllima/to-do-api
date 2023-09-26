@@ -12,6 +12,12 @@ app.post('/', validation(createTodoValidation), createTodo);
 
 app.delete('/:todoId', isTodoIdValid, deleteTodo);
 
+app.put(
+  '/:todoId',
+  validation(updateTodoValidation),
+  isTodoIdValid,
+  updateTodo
+);
 
 app.listen(PORT, () => {
   console.log(`Server srarted on port ${PORT}`);

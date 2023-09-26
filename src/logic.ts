@@ -39,3 +39,23 @@ export const deleteTodo = (req: Request, res: Response) => {
     .json({ message: 'Todo succesfully removed.' });
 };
 
+export const updateTodo = (req: Request, res: Response) => {
+  const todoId = String(req.params.todoId);
+
+  const index = todoDatabase.findIndex((todo) => {
+    return todo.id === todoId;
+  });
+
+  const newTodo = {
+    id: req.params.todoId,
+    title: String(req.body.title),
+    content: String(req.body.content),
+  };
+
+  todoDatabase.splice(index, 1, newTodo);
+
+  return res.status(200).json({
+    message: 'Todo succesfully updated.',
+    todo: newTodo,
+  });
+};
